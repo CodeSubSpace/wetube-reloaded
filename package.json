@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "The bestway to watch videos",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "win": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeSubSpace/wetube-reloaded.git"
-  },
-  "scripts": {
-    "win": "node index.js"
   },
   "author": "CodeSubSpace",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CodeSubSpace/wetube-reloaded/issues"
   },
-  "homepage": "https://github.com/CodeSubSpace/wetube-reloaded#readme"
+  "homepage": "https://github.com/CodeSubSpace/wetube-reloaded#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
