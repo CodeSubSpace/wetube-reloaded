@@ -1,0 +1,19 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "The bestway to watch videos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeSubSpace/wetube-reloaded.git"
+  },
+  "author": "CodeSubSpace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeSubSpace/wetube-reloaded/issues"
+  },
+  "homepage": "https://github.com/CodeSubSpace/wetube-reloaded#readme"
+}
