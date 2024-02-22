@@ -1,8 +1,15 @@
 import express from "express";
 
-const app = express(); //express application 생성
+const PORT = 4000;
+const app = express();
 
-const handleListening = () => console.log("Server listening on port 4000 🚀")
+// get request에 응답하는 방법 등을 application에게 먼저 만들어줘야 한다.
+const handleHome = () => console.log("Somebody is trying to go home");
+app.get("/", handleHome);
 
-app.listen(4000, handleListening) //request 대기
+// 그리고 나서 외부에 어플리케이션을 개방한다.
+const handleListening = () =>
+    console.log(`Server listening on port 4000 🚀 http://localhost:${PORT}`);
+
+app.listen(PORT, handleListening); //request 대기
 
