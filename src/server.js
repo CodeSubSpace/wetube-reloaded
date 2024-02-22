@@ -1,34 +1,23 @@
 import express from "express";
+import morgan from "morgan"
 
 const PORT = 4000;
 const app = express();
+const logger = morgan("dev");
+const logger_test = morgan("combined")
+const logger_test2 = morgan("tiny")
 
-// get request에 응답하는 방법 등을 application에게 먼저 만들어줘야 한다.
-const logger = (req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-}
-
-const privateMiddleware = (req, res, next) => {
-    const url = req.url;
-    if (url=='/protected') {
-        return res.send("<h1>Not Allowed</h1>")
-    }
-    console.log("Allowed, you may continue.")
-    next();
-}
-
-const handleHome = (req, res) => {
-    return res.send("I love mingyun");
+const home = (req, res) => {
+    console.log("I will respond.");
+    return res.send("hello");
 };
-
-const handleProtected = (req, res) => {
-    return res.send("Welcome to private world!")
+const login = (reg, res) => {
+    return res.send("login");
 }
 
-app.use(privateMiddleware);
-app.use(logger, handleHome);
-app.get("/private", handleProtected);
+app.use(logger);
+app.get("/", home);
+app.get("/login", login);
 
 // 그리고 나서 외부에 어플리케이션을 개방한다.
 const handleListening = () =>
