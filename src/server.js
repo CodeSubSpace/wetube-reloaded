@@ -2,24 +2,31 @@ import express from "express";
 import morgan from "morgan"
 
 const PORT = 4000;
+
 const app = express();
 const logger = morgan("dev");
-const logger_test = morgan("combined")
-const logger_test2 = morgan("tiny")
-
-const home = (req, res) => {
-    console.log("I will respond.");
-    return res.send("hello");
-};
-const login = (reg, res) => {
-    return res.send("login");
-}
-
 app.use(logger);
-app.get("/", home);
-app.get("/login", login);
 
-// 그리고 나서 외부에 어플리케이션을 개방한다.
+const globalRouter = express.Router();
+const handleHome = (req, res) => res.send("home");
+globalRouter.get("/", handleHome)
+
+const userRouter = express.Router();
+const handleEdituser = (req, res) => res.send("Edit User");
+userRouter.get("/edit", handleEdituser)
+
+const videoRouter = express.Router();
+const handleWatchVideo = (req, res) => res.send("Watch Video");
+videoRouter.get("/watch", handleWatchVideo);
+
+app.use("/", globalRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter);
+
+
+
+
+// Open application
 const handleListening = () =>
     console.log(`Server listening on port 4000 🚀 http://localhost:${PORT}`);
 
