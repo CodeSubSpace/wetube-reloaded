@@ -9,8 +9,8 @@
 
 <!-- User Router -->
 
-/user/edit -> Edit Profile
-/user/delete -> Delete user
+/users/edit -> Edit Profile
+/users/delete -> Delete user
 
 <!-- video Router -->
 
