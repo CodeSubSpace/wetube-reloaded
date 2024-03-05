@@ -13,15 +13,16 @@ app.use(logger);
 
 app.set("view engine", "pug");
 app.set("views", path.join(process.cwd(), "src/views"));
-// or
-// app.set("views" + process.cwd() + "src/views");
+
+
+app.use(express.urlencoded({ etended: true}));
 
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 
-// Open application
+
 const handleListening = () =>
     console.log(`Server listening on port 4000 🚀 http://localhost:${PORT}`);
 
-app.listen(PORT, handleListening); //request 대기  
+app.listen(PORT, handleListening);
