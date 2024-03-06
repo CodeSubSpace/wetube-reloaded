@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "The bestway to watch videos",
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "repository": {
-    "type": "git",
+    "type": "git", 
     "url": "git+https://github.com/CodeSubSpace/wetube-reloaded.git"
   },
   "author": "CodeSubSpace",
