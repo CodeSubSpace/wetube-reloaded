@@ -5,7 +5,7 @@ block content
         h1=errorMessage
 
     form(method="POST")
-        input(name="title", placeholder="Title", required, type="text")
-        input(name="description", placeholder="Description", required, type="text")
+        input(name="title", placeholder="Title", required, type="text" maxLength=80)
+        input(name="description", placeholder="Description", required, type="text", minLength=20)
         input(name="hashtags", placeholder="Hashtags", required, type="text")
         input(type="submit", value="upload")
