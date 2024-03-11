@@ -1,8 +1,14 @@
 import Video from "../models/video"
 
-export const home = (req, res) => {
-  Video.find({}, (error, videos) => {});
-  return  res.render("home", { pageTitle: "Home"});
+// Video.find({}, (error, videos) => {}); // 이제는 지원하지 않는 callback 함수
+
+export const home = async (req, res) => { 
+  try {
+    const videos = await Video.find({});
+    return  res.render("home", { pageTitle: "Home", videos: []});
+  } catch(error) {
+      return res.render("server-error", error)
+   }
   };
 
 export const watch = (req, res) => {
@@ -24,7 +30,7 @@ export const postEdit = (req, res) => {
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: `Upload Video`});
 }
-
+ 
 export const postUpload = (req, res) => {
   return res.redirect("/");
 }
