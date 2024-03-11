@@ -9,7 +9,7 @@
     "type": "git", 
     "url": "git+https://github.com/CodeSubSpace/wetube-reloaded.git"
   },
-  "author": "CodeSubSpace",
+  "author": "CodeSubSpace",  
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CodeSubSpace/wetube-reloaded/issues"

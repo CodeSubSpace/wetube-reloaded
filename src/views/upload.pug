@@ -1,6 +1,9 @@
 extends base.pug
 
 block content
+    if errorMessage
+        h1=errorMessage
+
     form(method="POST")
         input(name="title", placeholder="Title", required, type="text")
         input(name="description", placeholder="Description", required, type="text")
