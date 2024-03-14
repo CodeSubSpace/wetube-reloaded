@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 mongoose.connect("mongodb://127.0.0.1:27017/wetube", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // warning 지침에 따라 attributes 삭제함
 });
 
 const db = mongoose.connection;
