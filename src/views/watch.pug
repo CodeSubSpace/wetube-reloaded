@@ -1,8 +1,13 @@
 extends base.pug 
 
 block content
-    p=video.description
-    small=video.createdAt
     h1=video.title
+    div
+        p=video.description
+        small=video.createdAt
+    
     h3 #{video.views} #{video.views===1 ? "view" : "views"}
-    a(href=`${video.id}/edit`) Edit video &rarr;
+    
+    a(href=`${video.id}/edit`) Edit Video &rarr;
+    br
+    a(href=`${video.id}/delete`) Delete Video &rarr;
