@@ -11,10 +11,9 @@ const videoSchema = new mongoose.Schema({
     },
 });
 
-videoSchema.pre('save', async function() { // 모델이 생성되기 전에 middleware가 위치해야 한다.
-    this.hashtags = this.hastags[0].split(',').map(word => (word.startsWith("#") ? word : `#${word}`))
+videoSchema.static("formatHashtags", function(hashtags) {
+    return hashtags.split(",").map((word => (word.startsWith("#") ? word : `#${word}`)))
 })
-
 
 const Video = mongoose.model("Video", videoSchema); // 반드시 upper Case
 export default Video;
