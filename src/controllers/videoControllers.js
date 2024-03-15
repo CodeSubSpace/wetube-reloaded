@@ -1,7 +1,5 @@
 import Video from "../models/video"
 
-// Video.find({}, (error, videos) => {}); // 이제는 지원하지 않는 callback 함수
-
 export const home = async (req, res) => { 
   try {
     const videos = await Video.find({}).sort({createdAt:"asc"});

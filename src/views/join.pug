@@ -1,0 +1,10 @@
+extend base.pug
+
+block content
+    form(method='POST')
+        input(name="name", type="text", required,  placeholder="name")
+        input(name="email", type="email", require, placeholder="email")
+        input(name="username", type="text", require, placeholder="username")
+        input(name="password", type="password", require, placeholder="password")
+        input(name="location", type="text", require, placeholder="location")
+        input(type="submit", value="Join")
