@@ -17,6 +17,7 @@ app.set("views", path.join(process.cwd(), "src/views"));
 
 app.use(express.urlencoded({ etended: true}));
 
+//세션 미들웨어 추가
 app.use(
     session({
         secret:"Hello!",
@@ -24,6 +25,20 @@ app.use(
         saveUninitialized: true
     })
 );
+
+//세션을 이해하기 위하여...
+app.use((req, res, next) => {
+    req.sessionStore.all((error, sessions) => {
+        console.log(sessions)
+        next();
+    })
+})
+
+app.get("/add-one", (req, res, mex)=>{
+    req.session.zammin += 1
+    return res.send(`${req.session.id}`)
+})
+
 app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
