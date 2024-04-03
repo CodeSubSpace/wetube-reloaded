@@ -18,6 +18,8 @@ app.set("views", path.join(process.cwd(), "src/views"));
 
 app.use(express.urlencoded({ etended: true}));
 
+console.log(process.env.COOKIE_SECRET, process.env.DB_URL)
+
 //세션 미들웨어 추가
 app.use(
     session({
