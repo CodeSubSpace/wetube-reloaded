@@ -17,14 +17,13 @@ html(lang="ko")
                             a(href="/users/logout") Log Out    
                         li 
                             a(href="/my-profile") #{loggedInUser.name}의 정보
+                        li 
+                            a(href="videos/upload") Upload Video
                     else 
                         li
                             a(href="/join") Join
                         li
                             a(href="/login") Login
-
-                    li 
-                        a(href="videos/upload") Upload Video
                     li 
                         a(href="/search") Search
 
