@@ -7,3 +7,7 @@ block content
         input(name="username", type="text", require, placeholder="username", value=loggedInUser.username)
         input(name="location", type="text", require, placeholder="location", value=loggedInUser.location)
         input(type="submit", placeholder="Update Profile")
+        
+        if !loggedInUser.socialOnly
+            hr
+            a(href="change-password") Change Password &rarr;
