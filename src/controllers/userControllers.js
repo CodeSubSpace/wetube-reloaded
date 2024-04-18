@@ -176,12 +176,41 @@ export const postEdit = async (req, res) => {
 export const getChangePassword = (req, res) => {
   if(req.session.user.socialOnly == true ) {
     return redirect("/")}
-    
+
   return res.render("user/change-password", { pageTitle: "Change Password" })
 }
-export const postChangePassword = (req, res) => {
-  // send notification
-  return res.rdirect("/")
+
+export const postChangePassword = async (req, res) => {
+  const {
+    session: {
+      user: { _id, password },
+    },
+    body: {oldPassword, newPassword, newPasswordConfirmation },
+  } = req;
+
+  const ok = await bcrypt.compare(oldPassword, password);
+  if (!ok) {
+    //status(400)을 통해 비번이 틀린 경우에는 브라우저가 알아서 비번을 저장하지 못하도록 설정
+    return res.status(400).render("user/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "The current password is incorrect!"
+    })
+  }
+
+  if (newPassword !== newPasswordConfirmation) {
+    //status(400)을 통해 비번이 틀린 경우에는 브라우저가 알아서 비번을 저장하지 못하도록 설정
+    return res.status(400).render("user/change-password", {
+      pageTitle: "Change Password",
+      errorMessage: "The Password does not match the confirmation"
+    })
+  }
+  const user = await User.findById(_id);
+  user.password = newPassword;
+  await user.save()
+
+  // send notification : 비밀번호 변경 시 logout 설정
+  req.session.user.password = user.password;
+  return res.redirect("/users/logout")
 }
 
 export const see = (req, res) => res.send("see");

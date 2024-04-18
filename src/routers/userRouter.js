@@ -7,7 +7,9 @@ import { edit,
          logout, 
          startGithubLogin, 
          finishGithubLogin,
-         getChangePassword} from "../controllers/userControllers"
+         getChangePassword,
+        postChangePassword
+        } from "../controllers/userControllers"
 import { protectorMiddleware, publicOnlyMiddleware } from "../middlewares";
 
 const userRouter = express.Router();
@@ -24,7 +26,7 @@ userRouter
     .route("/change-password")
     .all(protectorMiddleware)
     .get(getChangePassword)
-    .post(getChangePassword)
+    .post(postChangePassword)
 
 userRouter.get("/remove", remove);
 
