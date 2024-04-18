@@ -160,9 +160,9 @@ export const postEdit = async (req, res) => {
     session: {
       user: { _id },
     },
-    body: {name, email, username, location}
+    body: {name, email, username, location}, file
   } = req;
-
+  console.log(file)
   const updateUser = await User.findByIdAndUpdate(
     _id, 
     { name, email, username, location, },
