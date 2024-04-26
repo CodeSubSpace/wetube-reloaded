@@ -9,6 +9,7 @@ import {
   getChangePassword,
   postChangePassword,
 } from "../controllers/userControllers";
+
 import {
   protectorMiddleware,
   publicOnlyMiddleware,
