@@ -9,6 +9,7 @@ module.exports = {
     },
     module: {
         rules: [
+            // rule 1
             {
                 test: /\.js$/,
                 use: {
@@ -18,6 +19,13 @@ module.exports = {
                     },
                 },
             },
+
+
+            // rule 2
+            {
+                test: /\.scss$/,
+                use: ["style-loader", "css-loader", "sass-loader"],
+            }
         ],
     },
 };
