@@ -1,10 +1,13 @@
-extend base.pug
-include mixins/video
+extends ./base
+include ../views/mixins/video
+
 
 block content
-    form(method="GET")
-        input(name='keyword', placeholder="Search by title", type="text")
-        input(type="submit", value="Search now")
-    
-    each video in videos
-        +video(video)
+    div.profile__data
+        img(src="/" + user.avatarUrl).avatar
+        h3=user.name
+    div.video-grid
+        each video in user.videos
+            +video(video)
+        else
+            span.empty__message No videos found
