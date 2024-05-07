@@ -4,9 +4,16 @@ const video = document.getElementById("preview");
 
 let stream;
 let recorder;
+let videoFile;
 
 
-const handleDownload = () => {};
+const handleDownload = () => {
+    const a = document.createElement("a");
+    a.href = videoFile;
+    a.download = "MyRecording.webm";
+    document.body.appendChild(a);
+    a.click();
+};
 
 
 const handleStop = () => {
